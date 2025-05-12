@@ -1,5 +1,5 @@
 # EX-NO14-HASH-ALGORITHM
-
+##### Muthulakshmi D - 212223040122
 ## AIM:
 To implement HASH ALGORITHM
 
@@ -27,9 +27,43 @@ To implement HASH ALGORITHM
 
 
 ## Program:
+```
+def encrypt(plaintext: str, shift: int) -> str:
+    ciphertext = ""
+    for ch in plaintext:
+        if 'A' <= ch <= 'Z':
+            ciphertext += chr((ord(ch) - ord('A') + shift) % 26 + ord('A'))
+        elif 'a' <= ch <= 'z':
+            ciphertext += chr((ord(ch) - ord('a') + shift) % 26 + ord('a'))
+        else:
+            ciphertext += ch
+    return ciphertext
 
+def decrypt(ciphertext: str, shift: int) -> str:
+    plaintext = ""
+    for ch in ciphertext:
+        if 'A' <= ch <= 'Z':
+            plaintext += chr((ord(ch) - ord('A') - shift + 26) % 26 + ord('A'))
+        elif 'a' <= ch <= 'z':
+            plaintext += chr((ord(ch) - ord('a') - shift + 26) % 26 + ord('a'))
+        else:
+            plaintext += ch
+    return plaintext
 
+# Main logic
+print("********** HASH (Encryption and Decryption) **********")
+
+plaintext = input("\nEnter the plaintext: ")
+shift = int(input("Enter the shift value (1-25): "))
+
+ciphertext = encrypt(plaintext, shift)
+print("\nEncrypted text:", ciphertext)
+
+decrypted_text = decrypt(ciphertext, shift)
+print("Decrypted text:", decrypted_text)
+```
 ## Output:
+![image](https://github.com/user-attachments/assets/6e684c3b-9d5b-4b15-88f3-7cf49b61738b)
 
 ## Result:
 The program is executed successfully.
